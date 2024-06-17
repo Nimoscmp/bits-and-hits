@@ -25,6 +25,7 @@ class _GamepageState extends State<Gamepage> {
   int bits = 0;
   int hits = 0;
   int attempts = 0;
+  BorderSide tableBorder = BorderSide(width: 0.5, color: Colors.grey.shade600);
   ScrollController tableScrollController = ScrollController();
 
   List<Text> setHeadTexts(List<String> texts) {
@@ -225,7 +226,11 @@ class _GamepageState extends State<Gamepage> {
           ),
         );
       } else if (i == 12) {
-        if (writtenNumbers.length != 4) color = Colors.grey.shade300;
+        if (writtenNumbers.length != 4) {
+          color = Colors.grey.shade300;
+        } else {
+          color = Colors.teal.shade300;
+        }
 
         button = IconButton(
           onPressed: () {
@@ -329,6 +334,7 @@ class _GamepageState extends State<Gamepage> {
               const Text("Write your number:", textScaleFactor: 1.75),
               Container(
                 width: 90,
+                margin: const EdgeInsets.only(top: 10),
                 padding: const EdgeInsets.only(left: 10),
                 decoration: BoxDecoration(
                     border: Border.all(width: 2.0, color: Colors.amber.shade100),
@@ -345,7 +351,9 @@ class _GamepageState extends State<Gamepage> {
                       controller: tableScrollController,
                       child: Table(
                         border: TableBorder(
-                            horizontalInside: BorderSide(width:0.5, color: Colors.grey.shade600)
+                            top: tableBorder,
+                            bottom: tableBorder,
+                            horizontalInside: tableBorder
                         ),
                         defaultVerticalAlignment: TableCellVerticalAlignment.middle,
                         children: <TableRow>[
